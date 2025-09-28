@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Random Route Visitor",
+  "version": "1.0",
+  "description": "Visits random routes from a base URL at random intervals",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Random Route Visitor"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}

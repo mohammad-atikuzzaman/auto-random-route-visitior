@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    
+    h3 {
+      margin-top: 0;
+      color: #333;
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 13px;
+    }
+    
+    textarea {
+      height: 80px;
+      resize: vertical;
+    }
+    
+    .range-input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .range-input input {
+      flex: 1;
+    }
+    
+    .range-value {
+      min-width: 40px;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    .active {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #c8e6c9;
+    }
+    
+    .inactive {
+      background-color: #ffebee;
+      color: #c62828;
+      border: 1px solid #ffcdd2;
+    }
+    
+    .countdown {
+      font-size: 12px;
+      margin-top: 5px;
+      font-weight: normal;
+    }
+    
+    .note {
+      font-size: 11px;
+      color: #666;
+      margin-top: 5px;
+    }
+    
+    .info {
+      font-size: 11px;
+      color: #2196F3;
+      background: #e3f2fd;
+      padding: 5px;
+      border-radius: 3px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h3>Random Route Visitor</h3>
+  
+  <div class="form-group">
+    <label for="baseUrl">Base URL:</label>
+    <input type="text" id="baseUrl" placeholder="https://example.com">
+    <div class="note">Leave empty to use current website</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="routes">Routes (one per line):</label>
+    <textarea id="routes" placeholder="/about&#10;/projects&#10;/contact"></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="maxTimeRange">Max Time between visits (seconds):</label>
+    <div class="range-input">
+      <input type="range" id="maxTimeRange" min="30" max="600" value="120">
+      <span class="range-value" id="maxTimeValue">120</span>
+    </div>
+    <div class="info">Random time between 30 and <span id="maxTimeDisplay">120</span> seconds</div>
+  </div>
+  
+  <button id="toggleBtn">Start Visiting</button>
+  
+  <div id="status" class="status inactive">
+    <div id="statusText">Inactive</div>
+    <div id="countdown" class="countdown"></div>
+    <div id="nextRoute" class="countdown"></div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
